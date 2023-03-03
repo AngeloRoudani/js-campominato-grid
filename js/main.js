@@ -10,6 +10,7 @@ const gridDom = document.querySelector('.grid');
 for ( let i = 1; i <= 100; i++) {
     const squareElement = document.createElement('div');
     squareElement.classList.add('square');
+    squareElement.append([i]);
     gridDom.append(squareElement);
 }
 
@@ -21,3 +22,5 @@ buttonPlay.addEventListener('click',
         gridDom.classList.remove('hidden')
     }
 )
+
+const squareClick = document.
