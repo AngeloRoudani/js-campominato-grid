@@ -4,33 +4,33 @@
    
 */
 
-
-const myGrid = document.querySelector('.grid');
-
 const buttonPlay = document.querySelector('.btn')
-
+const provaB = document.querySelector('grid');
+provaB = createSquareGrid(provaB, 1, 100);
+console.log(provaB);
 let battleMode = document.getElementById('mode').value
 
 buttonPlay.addEventListener('click', 
     
     function() {
         let battleMode = document.getElementById('mode').value
+        let myGrid = document.querySelector('.grid');
 
         if (battleMode == "easy"){
-            myGrid = createSquareGrid(myGrid, 1 , 100);
+            myGrid = createSquareGrid(1 , 100);
             myGrid.classList.remove('hidden');
         } else if (battleMode == "hard") {
-            myGrid = createSquareGrid(myGrid, 1 , 81);
+            myGrid = createSquareGrid(1 , 81);
             myGrid.classList.remove('hidden');
         } else if (battleMode == "very_hard"){
-            myGrid = createSquareGrid(myGrid, 1 , 49);
+            myGrid = createSquareGrid(1 , 49);
             myGrid.classList.remove('hidden');
         }
     }
 )
 
 function createSquareGrid (gridDom, min, max) {
-    let gridDom;
+    
     for ( let i = min; i <= max; i++) {
         const squareElement = document.createElement('div');
         squareElement.classList.add('square');
@@ -42,9 +42,10 @@ function createSquareGrid (gridDom, min, max) {
                 console.log([i]);
             }
         )
+        gridDom.append(squareElement);
     }
     
-    return gridDom.append(squareElement);
+
 }
 
 
