@@ -52,16 +52,19 @@ buttonPlay.addEventListener('click',
         let battleMode = document.getElementById('mode').value;
 
         if (battleMode == "easy"){
-            
-            gridDomEasy.classList.toggle('hidden');
+            gridDomHard.classList.add('hidden');
+            gridVeryHard.classList.add('hidden');
+            gridDomEasy.classList.remove('hidden');
 
         } else if (battleMode == "hard") {
-            
-            gridDomHard.classList.toggle('hidden');
+            gridDomEasy.classList.add('hidden');
+            gridVeryHard.classList.add('hidden');
+            gridDomHard.classList.remove('hidden');
 
         } else if (battleMode == "very_hard"){
-            
-            gridVeryHard.classList.toggle('hidden');
+            gridDomEasy.classList.add('hidden');
+            gridDomHard.classList.add('hidden');
+            gridVeryHard.classList.remove('hidden');
 
         }
     }
