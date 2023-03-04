@@ -46,7 +46,7 @@ main {
     padding: 50px 0;
 }
 
-.grid {
+.grid_easy {
     width: 1000px;
     height: 1000px;
     margin: auto;
@@ -55,9 +55,47 @@ main {
     border: solid 1px black;
 }
 
-.square {
+.grid_hard {
+    width: 900px;
+    height: 900px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    border: solid 1px black;
+}
+
+.grid_very {
+    width: 700px;
+    height: 700px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    border: solid 1px black;
+}
+
+.square_easy {
     width: calc(100% / 10);
     height: calc(100% / 10);
+    border: solid 1px black;
+    text-align: center;
+    font-size: 20px;
+    padding-top: 35px;
+    cursor: pointer;
+}
+
+.square_hard {
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+    border: solid 1px black;
+    text-align: center;
+    font-size: 20px;
+    padding-top: 35px;
+    cursor: pointer;
+}
+
+.square_very_hard {
+    width: calc(100% / 7);
+    height: calc(100% / 7);
     border: solid 1px black;
     text-align: center;
     font-size: 20px;

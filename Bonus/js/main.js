@@ -4,47 +4,87 @@
    
 */
 
-const buttonPlay = document.querySelector('.btn')
-const provaB = document.querySelector('grid');
-provaB = createSquareGrid(provaB, 1, 100);
-console.log(provaB);
-let battleMode = document.getElementById('mode').value
+const buttonPlay = document.querySelector('.btn');
+let gridDomEasy = document.querySelector('.grid_easy');
+let gridDomHard = document.querySelector('.grid_hard');
+let gridVeryHard = document.querySelector('.grid_very');
+
+
+for (let i = 1; i <= 100; i++) {
+    const easySquare = squareEasy();
+    easySquare.append([i]);
+    easySquare.addEventListener('click', 
+        function() {
+            this.classList.toggle('bg-yellow');
+        }
+    );
+    gridDomEasy.append(easySquare);
+}
+
+for (let i = 1; i <= 81; i++) {
+    const hardSquare = squareHard();
+    hardSquare.append([i]);
+    hardSquare.addEventListener('click', 
+        function() {
+            this.classList.toggle('bg-yellow');
+        }
+    );
+    gridDomHard.append(hardSquare);
+}
+
+for (let i = 1; i <= 49; i++) {
+    const verySquare = squareVeryHard();
+    verySquare.append([i]);
+    verySquare.addEventListener('click', 
+        function() {
+            this.classList.toggle('bg-yellow');
+        }
+    );
+    gridVeryHard.append(verySquare);
+}
+
+
+
 
 buttonPlay.addEventListener('click', 
     
     function() {
-        let battleMode = document.getElementById('mode').value
-        let myGrid = document.querySelector('.grid');
+        let battleMode = document.getElementById('mode').value;
 
         if (battleMode == "easy"){
-            myGrid = createSquareGrid(1 , 100);
-            myGrid.classList.remove('hidden');
+            
+            gridDomEasy.classList.toggle('hidden');
+
         } else if (battleMode == "hard") {
-            myGrid = createSquareGrid(1 , 81);
-            myGrid.classList.remove('hidden');
+            
+            gridDomHard.classList.toggle('hidden');
+
         } else if (battleMode == "very_hard"){
-            myGrid = createSquareGrid(1 , 49);
-            myGrid.classList.remove('hidden');
+            
+            gridVeryHard.classList.toggle('hidden');
+
         }
     }
 )
 
-function createSquareGrid (gridDom, min, max) {
-    
-    for ( let i = min; i <= max; i++) {
-        const squareElement = document.createElement('div');
-        squareElement.classList.add('square');
-        squareElement.append([i]);
-    
-        squareElement.addEventListener('click',
-            function() {
-                squareElement.classList.toggle('bg-yellow');
-                console.log([i]);
-            }
-        )
-        gridDom.append(squareElement);
-    }
-    
+function squareEasy () {
+    const squareElement = document.createElement('div');
+    squareElement.classList.add('square_easy');
+    return squareElement
+
+}
+
+function squareHard () {
+    const squareElement = document.createElement('div');
+    squareElement.classList.add('square_hard')
+    return squareElement
+
+}
+
+function squareVeryHard () {
+    const squareElement = document.createElement('div');
+    squareElement.classList.add('square_very_hard')
+    return squareElement
 
 }
 
