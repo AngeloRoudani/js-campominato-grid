@@ -10,7 +10,14 @@ let gridDomHard = document.querySelector('.grid_hard');
 let gridVeryHard = document.querySelector('.grid_very');
 
 
-for (let i = 1; i <= 100; i++) {
+let easySquare = squareEasy();
+console.log(easySquare);
+let hardSquare = squareHard();
+let verySquare = squareVeryHard();
+
+
+
+/*for (let i = 1; i <= 100; i++) {
     const easySquare = squareEasy();
     easySquare.append([i]);
     easySquare.addEventListener('click', 
@@ -20,6 +27,8 @@ for (let i = 1; i <= 100; i++) {
     );
     gridDomEasy.append(easySquare);
 }
+
+console.log(gridDomEasy);
 
 for (let i = 1; i <= 81; i++) {
     const hardSquare = squareHard();
@@ -41,7 +50,7 @@ for (let i = 1; i <= 49; i++) {
         }
     );
     gridVeryHard.append(verySquare);
-}
+}*/
 
 
 
@@ -51,17 +60,20 @@ buttonPlay.addEventListener('click',
     function() {
         let battleMode = document.getElementById('mode').value;
 
-        if (battleMode == "easy"){
-            gridDomHard.classList.add('hidden');
+        if (battleMode == "easy") {
+            squareGeneratorGrid(gridDomEasy, 1, 100, easySquare);
             gridVeryHard.classList.add('hidden');
             gridDomEasy.classList.remove('hidden');
+            gridDomHard.classList.add('hidden');
 
         } else if (battleMode == "hard") {
+            squareGeneratorGrid(gridDomHard, 1, 81, hardSquare);
             gridDomEasy.classList.add('hidden');
             gridVeryHard.classList.add('hidden');
             gridDomHard.classList.remove('hidden');
 
         } else if (battleMode == "very_hard"){
+            squareGeneratorGrid(gridVeryHard, 1, 49, verySquare);
             gridDomEasy.classList.add('hidden');
             gridDomHard.classList.add('hidden');
             gridVeryHard.classList.remove('hidden');
@@ -73,22 +85,40 @@ buttonPlay.addEventListener('click',
 function squareEasy () {
     const squareElement = document.createElement('div');
     squareElement.classList.add('square_easy');
-    return squareElement
+    return squareElement;
 
 }
 
 function squareHard () {
     const squareElement = document.createElement('div');
-    squareElement.classList.add('square_hard')
-    return squareElement
+    squareElement.classList.add('square_hard');
+    return squareElement;
 
 }
 
 function squareVeryHard () {
     const squareElement = document.createElement('div');
-    squareElement.classList.add('square_very_hard')
-    return squareElement
+    squareElement.classList.add('square_very_hard');
+    return squareElement;
 
+}
+
+function squareGeneratorGrid (gridDomPlace, min, max, squareFunction) {
+
+    let i = min;
+    
+    while ( i <= max) {
+        let squareCell = squareFunction;
+        squareCell.innerHTML =`<div class="number">${i}</div>`;
+        squareCell.addEventListener('click', 
+            function() {
+                this.classList.toggle('bg-yellow');
+            }
+        );
+        gridDomPlace.append(squareCell);
+        i++;
+        
+    }
 }
 
 
